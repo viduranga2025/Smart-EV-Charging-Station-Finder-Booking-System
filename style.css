@@ -1,0 +1,47 @@
+:root {
+    --green: #00ff88;
+    --blue: #00d4ff;
+    --dark: #0a0a0a;
+    --glass: rgba(255, 255, 255, 0.1);
+}
+
+body { background: var(--dark); margin: 0; font-family: 'Poppins', sans-serif; overflow: hidden; color: white; }
+
+/* Map Viewport Logic */
+.map-viewport {
+    height: 100vh; width: 100vw; position: relative; overflow: hidden;
+    background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
+}
+.map-grid {
+    position: absolute; width: 2000px; height: 2000px; top: -500px; left: -500px;
+    background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 50px 50px; transition: transform 0.8s cubic-bezier(0.2, 0, 0.2, 1);
+}
+
+/* Markers */
+.user-marker { position: absolute; top: 1000px; left: 1000px; color: var(--blue); font-size: 24px; z-index: 10; }
+.pulse { position: absolute; width: 40px; height: 40px; background: rgba(0, 212, 255, 0.3); border-radius: 50%; transform: translate(-25%, -25%); animation: pulse 2s infinite; }
+
+.station-marker {
+    position: absolute; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
+    background: var(--glass); border: 1px solid var(--green); border-radius: 12px; cursor: pointer; transition: 0.3s;
+}
+.station-marker.busy { border-color: #ff4444; color: #ff4444; }
+.station-marker:hover { transform: scale(1.2); background: var(--green); color: black; }
+
+/* Floating UI */
+.eco-header { position: fixed; top: 20px; width: 100%; display: flex; justify-content: space-between; padding: 0 20px; box-sizing: border-box; z-index: 100; }
+.card-glass { background: var(--glass); backdrop-filter: blur(10px); padding: 10px 20px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1); }
+
+.info-panel {
+    position: fixed; bottom: 0; width: 100%; background: #111; border-radius: 30px 30px 0 0;
+    padding: 20px; z-index: 200; transition: transform 0.4s ease; border-top: 2px solid var(--green);
+}
+.info-panel.hidden { transform: translateY(100%); }
+
+.filter-bar { position: fixed; top: 90px; left: 20px; display: flex; gap: 10px; z-index: 100; overflow-x: auto; width: 100%; padding-right: 20px; }
+.filter-btn { background: var(--glass); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 8px 18px; border-radius: 20px; white-space: nowrap; cursor: pointer; }
+.filter-btn.active { background: var(--green); color: black; border: none; }
+
+@keyframes pulse { 0% { transform: translate(-25%, -25%) scale(1); opacity: 1; } 100% { transform: translate(-25%, -25%) scale(2.5); opacity: 0; } }

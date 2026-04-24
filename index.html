@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoDrive Pro - Interactive EV Finder</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="eco-header">
+            <div class="user-profile" onclick="toggleProfile()">
+                <img src="https://i.pravatar.cc/100" alt="User">
+                <div class="status-dot"></div>
+            </div>
+            <div class="battery-status card-glass">
+                <i class="fa-solid fa-battery-three-quarters" id="battIcon"></i>
+                <span id="battLevel">64%</span>
+            </div>
+        </header>
+
+        <div class="map-viewport" id="mapContainer">
+            <div id="mapGrid" class="map-grid">
+                <div class="user-marker" id="userPos">
+                    <div class="pulse"></div>
+                    <i class="fa-solid fa-car-side"></i>
+                </div>
+                </div>
+        </div>
+
+        <div class="filter-bar">
+            <button class="filter-btn active" onclick="filterStations('all')">All</button>
+            <button class="filter-btn" onclick="filterStations('CCS2')">Fast (CCS2)</button>
+            <button class="filter-btn" onclick="filterStations('Free')">Available</button>
+        </div>
+
+        <div class="info-panel hidden" id="infoPanel">
+            <div class="drag-handle" onclick="togglePanel()"></div>
+            <div id="panelBody">
+                </div>
+        </div>
+
+        <nav class="bottom-nav">
+            <div class="nav-item active" onclick="moveMap('center')"><i class="fa-solid fa-location-crosshairs"></i></div>
+            <div class="nav-item" onclick="toggleListView()"><i class="fa-solid fa-list-ul"></i></div>
+            <div class="nav-item scanner-btn"><i class="fa-solid fa-qrcode"></i></div>
+            <div class="nav-item"><i class="fa-solid fa-route"></i></div>
+            <div class="nav-item"><i class="fa-solid fa-gear"></i></div>
+        </nav>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
